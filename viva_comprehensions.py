@@ -1,3 +1,4 @@
+from turtledemo.penrose import start
 from typing import List, Dict, Set, Callable
 import enum
 
@@ -18,8 +19,11 @@ def gen_list(start: int, stop: int, parity: Parity) -> List[int]:
     :param parity:
     :return:
     """
-    pass
-
+    if parity == parity.ODD:
+        return [x for x in range(start, stop) if x % 2 != 0]
+    else:
+        return [x for x in range(start, stop) if x % 2 == 0]
+#list_comp = [expr for value in collection if condition]
 
 def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     """
@@ -33,8 +37,8 @@ def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     :param strategy:
     :return:
     """
-    pass
-
+    return {x: strategy(x) for x in range(start, stop)}
+# dict_comp = {key-expr : value-expr for value in collection if condition}
 
 def gen_set(val_in: str) -> Set:
     """
@@ -45,4 +49,5 @@ def gen_set(val_in: str) -> Set:
     :param val_in:
     :return:
     """
-    pass
+    return {val_in.upper() for val_in in val_in if val_in.islower()}
+# expression for value in collection if condition
